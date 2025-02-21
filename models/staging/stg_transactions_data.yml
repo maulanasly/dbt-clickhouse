@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: stg_transactions_data
+    description: "Transactions data"
+    columns:
+      - name: id
+        description: "Transaction ID"
+        tests:
+          - unique
+          - not_null
+      - name: transaction_date
+        description: "Transaction date"
+        tests:
+          - not_null
+      - name: client_id
+        description: "Client ID"
+        tests:
+          - not_null
+      - name: card_id
+        description: "Card ID"
+        tests:
+          - not_null
+      - name: amount
+        description: "Transaction amount"
+        tests:
+          - not_null
+      - name: use_chip
+        description: "Whether chip was used in transaction"
+      - name: merchant_id
+        description: "Merchant ID"
+        tests:
+          - not_null
+      - name: merchant_city
+        description: "Merchant city"
+      - name: merchant_state
+        description: "Merchant state"
+      - name: zip
+        description: "Merchant ZIP code"
+      - name: mcc
+        description: "Merchant Category Code"
+      - name: errors
+        description: "Transaction errors"

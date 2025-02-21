@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_cards_data
+    columns:
+      - name: id
+        type: Int64
+      - name: client_id
+        type: Int64
+      - name: has_chip
+        type: Boolean
+      - name: num_cards_issued
+        type: Int32
+      - name: credit_limit
+        type: Decimal64(2)
+      - name: acct_open_date
+        type: DateTime64

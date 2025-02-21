@@ -1,0 +1,43 @@
+-- filepath: /home/yusufm/Documents/Projects/playground/data-warehouse/dbt-clickhouse/models/marts/schema.yml
+version: 2
+
+models:
+  - name: mart_transactions
+    schema: marts
+    description: "Transaction analysis mart combining transaction facts with customer, card, and merchant dimensions"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for the transaction"
+        tests:
+          - unique
+          - not_null
+
+      - name: transaction_date
+        description: "Date and time of the transaction"
+        tests:
+          - not_null
+
+      - name: amount
+        description: "Transaction amount in USD"
+        tests:
+          - not_null
+
+      - name: credit_utilization_pct
+        description: "Transaction amount as a percentage of credit limit"
+
+      - name: is_chip_available_not_used
+        description: "Flag indicating chip was available but not used (potential fraud indicator)"
+
+      - name: transaction_to_income_ratio
+        description: "Transaction amount relative to yearly income"
+
+    tests:
+      - dbt_utils.relationships:
+          to: ref('dim_customers')
+          field: customer_id
+
+      - dbt_utils.relationships:
+          to: ref('dim_cards')
+          field: card_id
+
+    materialized: table

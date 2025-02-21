@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: dim_customers
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: current_age
+        tests:
+          - not_null
+      - name: retirement_age
+        tests:
+          - not_null
+      - name: birth_year
+        tests:
+          - not_null
+      - name: gender
+      - name: address
+      - name: latitude
+      - name: longitude
+      - name: per_capita_income_usd
+      - name: yearly_income_usd
+      - name: total_debt_usd
+      - name: credit_score
+      - name: num_credit_cards

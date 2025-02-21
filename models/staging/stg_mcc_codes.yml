@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_mcc_codes
+    description: "MCC codes"
+    columns:
+      - name: code
+        description: "MCC code"
+        tests:
+          - unique
+      - name: description
+        description: "MCC name or description"

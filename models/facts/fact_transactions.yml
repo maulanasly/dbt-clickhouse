@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fact_transactions
+    description: "Fact table containing transaction records"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for each transaction"
+      - name: transaction_date
+        description: "Transaction date"
+      - name: customer_id
+        description: "Customer identifier"
+      - name: card_id
+        description: "Card identifier"
+      - name: amount
+        description: "Transaction amount"
+      - name: use_chip
+        description: "Indicates if chip was used in transaction"
+      - name: merchant_id
+        description: "Merchant identifier"
+      - name: merchant_city
+        description: "City where merchant is located"
+      - name: merchant_state
+        description: "State where merchant is located"
+      - name: merchant_zip
+        description: "Merchant ZIP code"
+      - name: merchant_category_code
+        description: "Merchant category code"
+      - name: transaction_errors
+        description: "Transaction error codes"
