@@ -1,0 +1,24 @@
+versionL: 2
+
+models:
+  - name: dim_cards
+    columns:
+      - name: card_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: card_brand
+      - name: card_type
+      - name: card_number
+      - name: expires
+      - name: has_chip
+      - name: num_cards_issued
+      - name: credit_limit
+      - name: acct_open_date
+      - name: year_pin_last_changed
+      - name: card_on_dark_web

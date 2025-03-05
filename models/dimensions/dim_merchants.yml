@@ -1,0 +1,13 @@
+verstion: 2
+
+models:
+  - name: dim_merchants
+    columns:
+      - name: merchant_category_code
+        tests:
+          - unique
+          - not_null
+      - name: merchant_category_name
+        tests:
+          - unique
+          - not_null

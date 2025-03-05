@@ -1,0 +1,103 @@
+version: 2
+
+sources:
+  - name: default
+    description: "Source of financial data"
+    tables:
+      - name: cards_data
+        description: "Credit cards data"
+        columns:
+          - name: id
+            description: "Unique identifier"
+          - name: client_id
+            description: "Client identifier"
+          - name: card_brand
+            description: "Brand of the credit card"
+          - name: card_type
+            description: "Type of the credit card"
+          - name: card_number
+            description: "Credit card number"
+          - name: expires
+            description: "Card expiration date"
+          - name: cvv
+            description: "Card verification value"
+          - name: has_chip
+            description: "Whether card has chip"
+          - name: num_cards_issued
+            description: "Number of cards issued"
+          - name: credit_limit
+            description: "Credit limit on card"
+          - name: acct_open_date
+            description: "Account opening date"
+          - name: year_pin_last_changed
+            description: "Year when PIN was last changed"
+          - name: card_on_dark_web
+            description: "Whether card data found on dark web"
+
+      - name: mcc_codes
+        description: "Merchant Category Codes reference data"
+        columns:
+          - name: code
+            description: "MCC code"
+          - name: name
+            description: "MCC description"
+
+      - name: transactions_data
+        description: "Transaction records"
+        columns:
+          - name: id
+            description: "Transaction identifier"
+          - name: date
+            description: "Transaction date"
+          - name: client_id
+            description: "Client identifier"
+          - name: card_id
+            description: "Card identifier"
+          - name: amount
+            description: "Transaction amount"
+          - name: use_chip
+            description: "Whether chip was used"
+          - name: merchant_id
+            description: "Merchant identifier"
+          - name: merchant_city
+            description: "Merchant city"
+          - name: merchant_state
+            description: "Merchant state"
+          - name: zip
+            description: "Merchant ZIP code"
+          - name: mcc
+            description: "Merchant Category Code"
+          - name: errors
+            description: "Transaction errors if any"
+
+      - name: users_data
+        description: "User demographic and financial information"
+        columns:
+          - name: id
+            description: "User identifier"
+          - name: current_age
+            description: "Current age of user"
+          - name: retirement_age
+            description: "Expected retirement age"
+          - name: birth_year
+            description: "Year of birth"
+          - name: birth_month
+            description: "Month of birth"
+          - name: gender
+            description: "User gender"
+          - name: address
+            description: "User address"
+          - name: latitude
+            description: "Address latitude"
+          - name: longitude
+            description: "Address longitude"
+          - name: per_capita_income
+            description: "Per capita income"
+          - name: yearly_income
+            description: "Annual income"
+          - name: total_debt
+            description: "Total debt amount"
+          - name: credit_score
+            description: "Credit score"
+          - name: num_credit_cards
+            description: "Number of credit cards"

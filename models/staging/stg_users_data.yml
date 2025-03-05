@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_users_data
+    description: "Users data"
+    columns:
+      - name: id
+        description: "User ID"
+        tests:
+          - unique
+          - not_null
+      - name: current_age
+        description: "Current age of the user"
+      - name: retirement_age
+        description: "Retirement age of the user"
+      - name: birth_year
+        description: "Year of birth"
+      - name: birth_month
+        description: "Month of birth"
+      - name: gender
+        description: "User gender"
+      - name: address
+        description: "User address"
+      - name: latitude
+        description: "Location latitude"
+      - name: longitude
+        description: "Location longitude"
+      - name: per_capita_income_usd
+        description: "Per capita income in USD"
+      - name: yearly_income_usd
+        description: "Yearly income in USD"
+      - name: total_debt_usd
+        description: "Total debt in USD"
+      - name: credit_score
+        description: "User credit score"
+      - name: num_credit_cards
+        description: "Number of credit cards"

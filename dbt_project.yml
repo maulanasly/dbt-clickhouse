@@ -1,0 +1,24 @@
+name: 'warehouse_101'
+version: '1.0.0'
+config-version: 2
+
+profile: 'dev'
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  warehouse_101:
+    staging:
+      schema: staging
+      materialized: table
+    facts:
+      schema: facts
+      materialized: table
+    dimensions:
+      schema: dimensions
+      materialized: table
+    marts:
+      schema: mart
+      materialized: table

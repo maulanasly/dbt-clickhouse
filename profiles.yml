@@ -1,0 +1,19 @@
+dev:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      schema: warehouse
+      host: localhost
+      port: 9000
+      user: clickhouse
+      password: clickhouse
+      threads: 4
+    prod:
+      type: clickhouse
+      schema: warehouse
+      host: localhost
+      port: 9000
+      user: clickhouse
+      password: clickhouse
+      threads: 8
