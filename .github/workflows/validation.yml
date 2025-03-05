@@ -2,7 +2,7 @@ name: dbt Validation
 
 on:
   push:
-    branches: [ "main", "development", "feat/***" ]
+    branches: [ "main", "development", "feat/**" ]
   pull_request:
     branches: [ "main", "development" ]
 
