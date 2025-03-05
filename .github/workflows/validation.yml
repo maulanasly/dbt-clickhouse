@@ -35,6 +35,15 @@ jobs:
       - name: dbt compile
         run: dbt compile
 
+      - name: Check for modified models
+        id: changed-files
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            models:
+              - 'models/**/*.sql'
+              - 'models/**/*.yml'
+
       - name: dbt test modified models
         if: steps.changed-files.outputs.models == 'true'
         run: |
