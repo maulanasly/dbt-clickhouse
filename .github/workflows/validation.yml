@@ -1,0 +1,55 @@
+name: dbt Validation
+
+on:
+  push:
+    branches: [ "main", "development", "feat/***" ]
+  pull_request:
+    branches: [ "main", "development" ]
+
+  workflow_dispatch:
+
+jobs:
+  dbt-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt-clickhouse
+          pip install dbt-core
+          pip install sqlfluff
+          pip install sqlfluff-templater-dbt
+
+      - name: dbt deps
+        run: dbt deps
+
+      - name: dbt compile
+        run: dbt compile
+
+      - name: dbt test modified models
+        if: steps.changed-files.outputs.models == 'true'
+        run: |
+          CHANGED_MODELS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'models/' | sed 's/models\///' | sed 's/\.sql$//' | sort -u | tr '\n' ' ')
+          if [ ! -z "$CHANGED_MODELS" ]; then
+            echo "Testing changed models: $CHANGED_MODELS"
+            dbt test --select $CHANGED_MODELS
+          else
+            echo "No model changes detected"
+          fi
+
+      - name: Run full tests on main branches
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/development'
+        run: dbt test
+
+      - name: SQLFluff lint
+        run: |
+          sqlfluff lint models/ --dialect clickhouse
